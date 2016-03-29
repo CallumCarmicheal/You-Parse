@@ -1,0 +1,47 @@
+﻿{
+  // Manifest
+  "manifest_version": 2,
+
+  // Extension Information
+  "name": "You-Parse",
+  "version": "1.0",
+  "description": "Something here", // TODO: Make description
+
+
+  // Permissions
+  "permissions": [
+    "storage",
+    "tabs",
+    "*://*.youtube.com/*",
+    "webNavigation",
+    "file:///*"
+  ],
+
+  // Images
+  "icons": {
+    "128": "img/ico.png"
+  },
+
+  // Background scripts
+  "background": {
+    "scripts": [ "scripts/Background.js", "scripts/JQuery.js" ],
+    "persistent": true
+  },
+
+  // Browser handler
+  "browser_action": {
+    "default_icon": "img/ico.png",
+    "default_title": "YouParse",
+    "default_popup": "pages/onActionClicked.html"
+  },
+
+
+  // Content settings (YOUTUBE)
+  "content_scripts": [
+    {
+      "matches": [ "*://*.youtube.com/*" ],
+      "js": [ "scripts/onPageLoad.js" ],
+      "run_at": "document_end"
+    }
+  ]
+}
